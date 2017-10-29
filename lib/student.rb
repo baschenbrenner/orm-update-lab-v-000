@@ -56,8 +56,8 @@ attr_accessor :id, :name, :grade
       Student.new(id, name, grade)
     end
 
-    def self.find_by_name(name)      
-      self.new_from_db(DB[:conn].execute("SELECT * FROM students WHERE name = ?", name)[0])  
+    def self.find_by_name(name)
+      self.new_from_db(DB[:conn].execute("SELECT * FROM students WHERE name = ?", name)[0])
     end
 
     def self.all
