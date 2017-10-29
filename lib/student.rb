@@ -46,6 +46,7 @@ attr_accessor :id, :name, :grade
       DB[:conn].execute("INSERT INTO students (name, grade) VALUES (?,?)",name, grade)
       new_student=self.new(DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0],name,grade)
       @@all << new_student
+      new_student
     end
 
     def self.new_from_db(row)
