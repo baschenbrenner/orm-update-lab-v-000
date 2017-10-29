@@ -28,8 +28,12 @@ attr_accessor :id, :name, :grade
     end
 
     def save
+      if self.id <= DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
+        DB[:conn].execute("UDPATE students (name, grade) VALUES (?,?) WHERE id = ?",self.name, self.grade, self.id)
+      else
       DB[:conn].execute("INSERT INTO students (name, grade) VALUES (?,?)",self.name, self.grade)
       @id=DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
+      end
     end
 
   # Remember, you can access your database connection anywhere in this class
