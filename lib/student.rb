@@ -29,8 +29,10 @@ attr_accessor :id, :name, :grade
 
     def save
       current_database_number=DB[:conn].execute("SELECT * FROM students").length
-      if self.id < current_database_number || self.id == current_database_number
-        DB[:conn].execute("UDPATE students SET name = ?, grade = ? WHERE id = ?;",self.name, self.grade, self.id)
+      if self.id != nil
+        if self.id < current_database_number || self.id == current_database_number
+          DB[:conn].execute("UDPATE students SET name = ?, grade = ? WHERE id = ?;",self.name, self.grade, self.id)
+        end
       else
       DB[:conn].execute("INSERT INTO students (name, grade) VALUES (?,?)",self.name, self.grade)
       @id=DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
