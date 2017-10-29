@@ -61,7 +61,7 @@ describe "Student" do
       jane = Student.new("Jane", "11th")
       jane.save
       jane_id = jane.id
-      
+
       jane.name = "Jane Smith"
       jane.save
       
