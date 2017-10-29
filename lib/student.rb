@@ -28,7 +28,7 @@ attr_accessor :id, :name, :grade
     end
 
     def save
-      current_database_number=DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
+      current_database_number=DB[:conn].execute("SELECT * FROM students").length
       if self.id < current_database_number || self.id == current_database_number
         DB[:conn].execute("UDPATE students SET name = ?, grade = ? WHERE id = ?;",self.name, self.grade, self.id)
       else
