@@ -61,7 +61,7 @@ attr_accessor :id, :name, :grade
         id = DB[:conn].execute("SELECT * FROM students WHERE name = ?", name)[0][0]
         found_student = self.new_from_db(DB[:conn].execute("SELECT * FROM students WHERE name = ?", name)[0])
         found_student.id = id
-        binding.pry
+        
     end
 
     def self.all
