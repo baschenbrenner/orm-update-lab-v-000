@@ -49,14 +49,14 @@ attr_accessor :id, :name, :grade
       name =row[1]
       grade =row[2]
       self.create(name, grade)
-      
+
     end
 
     def self.find_by_name(name)
       
-      
+
     end
-    
+
 
   # Remember, you can access your database connection anywhere in this class
   #  with DB[:conn]
