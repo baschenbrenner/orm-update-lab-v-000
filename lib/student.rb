@@ -3,7 +3,7 @@ require_relative "../config/environment.rb"
 class Student
 attr_accessor :id, :name, :grade
 
-@@all =[] 
+@@all =[]
 
   def initialize(id=nil, name, grade)
     @name=name
@@ -44,7 +44,8 @@ attr_accessor :id, :name, :grade
 
     def self.create(name, grade)
       DB[:conn].execute("INSERT INTO students (name, grade) VALUES (?,?)",name, grade)
-      self.new(DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0],name,grade)
+      new_student=self.new(DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0],name,grade)
+      @@all << new_student
     end
 
     def self.new_from_db(row)
