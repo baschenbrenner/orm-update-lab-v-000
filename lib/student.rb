@@ -60,6 +60,10 @@ attr_accessor :id, :name, :grade
       self.new_from_db(DB[:conn].execute("SELECT * FROM students WHERE name = ?", name)[0])
     end
 
+    def update
+      self.save
+    end
+    
     def self.all
       @@all
     end
