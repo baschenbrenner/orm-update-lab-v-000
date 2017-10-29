@@ -53,8 +53,8 @@ attr_accessor :id, :name, :grade
     end
 
     def self.find_by_name(name)
-      DB[:conn].execute("SELECT * FROM students WHERE name = ?", name)
-
+      id = DB[:conn].execute("SELECT * FROM students WHERE name = ?", name)[0][0]
+      
     end
 
 
