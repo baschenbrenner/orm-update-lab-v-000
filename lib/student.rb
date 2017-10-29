@@ -63,7 +63,7 @@ attr_accessor :id, :name, :grade
     def update
       self.save
     end
-    
+
     def self.all
       @@all
     end
