@@ -39,7 +39,7 @@ attr_accessor :id, :name, :grade
       end
     end
 
-    def create(name, grade)
+    def self.create(name, grade)
       DB[:conn].execute("INSERT INTO students (name, grade) VALUES (?,?)",name, grade)
     end
 
